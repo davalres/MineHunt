@@ -86,7 +86,6 @@ public class MineHuntView extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
 			// initialisation
 			initialize();
 
@@ -98,7 +97,6 @@ public class MineHuntView extends Application {
 			tfClicks = new TextField();
 			tfErrors = new TextField();
 			GridPane gpNombreDe = gpNombreDe();
-			// tController = new TerrainController(mhModel, this);
 			// tController déjà créé dans initialize();
 			smController = new ShowMinesController(mhModel, this);
 			HBox hbButtons = hbButtons();
@@ -106,15 +104,15 @@ public class MineHuntView extends Application {
 			// Place tous les composants dans le container principal
 			root.getChildren().addAll(lblTitle, gpNombreDe, gpTerrain, hbButtons);
 
-			scene = new Scene(root, 700, 450);
+			scene = new Scene(root);
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.setTitle("Mine Hunt");
 			primaryStage.show();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		// btnNewGame.setOnAction(event -> start(primaryStage));
 	}
 
 	public void createControllerNewGame() {
@@ -181,7 +179,6 @@ public class MineHuntView extends Application {
 
 	private GridPane gpNombreDe() {
 		// GridPane Numbers of clicks / errors
-		// ---------------------------------------
 		GridPane gpNombreDe = new GridPane();
 		ColumnConstraints column1 = new ColumnConstraints();
 		ColumnConstraints column2 = new ColumnConstraints();
@@ -259,8 +256,6 @@ public class MineHuntView extends Application {
 	}
 
 	public void ouvrirToutesLesCasesAutour(boolean[][] terrain, int[][] casesAutour) {
-
-		//System.out.println(Arrays.deepToString(casesAutour));
 		for (int i = 0; i < casesAutour.length; i++) {
 			if ((casesAutour[i][0] >= 0 && casesAutour[i][0] < terrain.length)
 					&& (casesAutour[i][1] >= 0 && casesAutour[i][1] < terrain[0].length)) {

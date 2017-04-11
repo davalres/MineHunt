@@ -39,8 +39,6 @@ public class InitialisationController implements EventHandler<ActionEvent> {
     // mise à jour de la vue avec les nouvelle valeurs du model
     view.updateNbClicks(model.getNbClicks());
     view.updateNbErrors(model.getNbErrors());
-    //view.updateTerrain(model.getTerrain()[0].length, model.getTerrain().length);
-    
   }
   
 }

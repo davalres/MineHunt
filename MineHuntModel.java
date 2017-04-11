@@ -16,19 +16,6 @@ public class MineHuntModel implements IMineHuntModel {
 	private int pourcentDeMines;
 	private int nbMines;
 	
-	// Listeners
-	
-	// Constructeur
-//	public MineHuntModel(int hauteur, int largeur, int pourcentDeMines) {
-//		terrain = new boolean[hauteur][largeur];
-//		dejaClique = new boolean[hauteur][largeur];
-//		flagged = new boolean[hauteur][largeur];
-//		nbClicks = 0;
-//		nbErreurs = 0;
-//		this.pourcentDeMines = pourcentDeMines;
-//		System.out.println("JEan");
-//	}
-
 	// Constructeur pour l'initialisation
 	public MineHuntModel() {
 		terrain = null;
@@ -75,7 +62,6 @@ public class MineHuntModel implements IMineHuntModel {
 
 	public void setUneCaseDejaClique(int ligIndex, int colIndex, boolean dejaClique) {
 		this.dejaClique[ligIndex][colIndex] = dejaClique;
-		// afficherDejaClique();
 	}
 
 	public void setFlagged(int ligIndex, int colIndex) {
@@ -332,7 +318,6 @@ public class MineHuntModel implements IMineHuntModel {
 		for (int i = 0; i < terrain.length; i++) {
 			for (int j = 0; j < terrain[0].length; j++) {
 				c = terrain[i][j] == false ? Integer.toString(nbMinesAutour(i, j)) : " ";
-				// c = terrain[i][j] == false ? " " : "B";
 				System.out.print("[" + c + "]");
 			}
 			System.out.println();
@@ -352,10 +337,7 @@ public class MineHuntModel implements IMineHuntModel {
 	}
 
 	public static void main(int[] args) {
-		//MineHuntModel m = new MineHuntModel(args[0], args[1], args[2]);
-		// m.initialiser();
-		// m.afficherTableau();
-
+		
 	}
 	
 	

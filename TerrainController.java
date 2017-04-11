@@ -18,15 +18,12 @@ public class TerrainController {
 	public void gererClick(MouseEvent event) {
 		try {
 			CellButton btn = (CellButton) event.getSource();
-
 			if (event.getButton() == MouseButton.PRIMARY) {
-				
 				gererBouton(btn);
 				if (model.estTermine()) {
 					int nbErrors = model.getNbErrors();
 					view.terminerPartie(nbErrors);
-				}
-				
+				}	
 			} else if (event.getButton() == MouseButton.SECONDARY) {
 				int ligIndex = btn.getLigIndex();
 				int colIndex = btn.getColIndex();
