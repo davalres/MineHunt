@@ -2,13 +2,7 @@ package s02;
 
 import s02.MineHuntController;
 import s02.CellButton;
-
-import java.awt.GraphicsDevice;
-import java.util.Arrays;
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -17,20 +11,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import s02.SettingsView;
 
 public class MineHuntView extends Application {
 	// ATTRIBUTS DE L'OBJET VUE
 	// ------------------------------------------------------------------------------------------------
 	private MineHuntView mhView;
+	private SettingsView sView;
+	private SettingController sController;
 	private MineHuntModel mhModel;
 	private MineHuntController mhController;
 	private NewGameController ngController;
@@ -38,6 +35,7 @@ public class MineHuntView extends Application {
 	private ShowMinesController smController;
 	private Scene scene;
 	private VBox root;
+	private Menu mnuSettings;
 	private TextField tfClicks, tfErrors;
 	private Button btnShowMines, btnNewGame;
 	private static final String IMG_BOMB = "file:src/s02/resources/bomb.png";
@@ -67,17 +65,20 @@ public class MineHuntView extends Application {
 		mhController = new MineHuntController(mhModel, this);
 		// On execute la méthode initializee() de notre controller
 		mhController.initialize();
-
+		sView = new SettingsView(mhModel, sController);
+		sController = new SettingController(mhModel, sView);
+		
 		System.out.println("Fin initialisation");
 	}
 
-	//
+	// max: 28
 	public int getHauteur() {
 		return 20;
 	}
 
+	// max: 67
 	public int getLargeur() {
-		return 20;
+		return 10;
 	}
 
 	public int getPourcentMines() {
@@ -97,6 +98,10 @@ public class MineHuntView extends Application {
 
 			// création des autres composants de la vue
 			Label lblTitle = lblTitle();
+			MenuBar mBar = new MenuBar();
+			mnuSettings = new Menu("Settings");
+			mnuSettings.setOnAction(sController);
+			mBar.getMenus().add(mnuSettings);
 			tfClicks = new TextField();
 			tfErrors = new TextField();
 			GridPane gpNombreDe = gpNombreDe();
@@ -105,7 +110,7 @@ public class MineHuntView extends Application {
 			HBox hbButtons = hbButtons();
 			createControllerNewGame();
 			// Place tous les composants dans le container principal
-			root.getChildren().addAll(lblTitle, gpNombreDe, gpTerrain, hbButtons);
+			root.getChildren().addAll(mBar, lblTitle, gpNombreDe, gpTerrain, hbButtons);
 
 			scene = new Scene(root);
 			primaryStage.setScene(scene);
@@ -116,6 +121,8 @@ public class MineHuntView extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 	public void createControllerNewGame() {
@@ -146,7 +153,8 @@ public class MineHuntView extends Application {
 				CellButton cb = new CellButton(i, j);
 				cb.setMinSize(25, 25);
 				cb.setMaxSize(25, 25);
-				cb.setStyle("-fx-font-size: 12px; -fx-background-color: grey;");
+				cb.setStyle("-fx-font-size: 12px; -fx-background-color: grey;"
+						+ "-fx-border-radius: null;");
 				cb.setPadding(new Insets(1, 1, 1, 1));
 				cb.setOnMouseClicked(event -> {
 					tController.gererClick(event);
@@ -170,7 +178,7 @@ public class MineHuntView extends Application {
 	private VBox root() {
 		root = new VBox();
 		root.setAlignment(Pos.TOP_CENTER);
-		root.setPadding(new Insets(10, 10, 10, 10));
+		//root.setPadding(new Insets(10, 10, 10, 10));
 		return root;
 	}
 
@@ -304,8 +312,7 @@ public class MineHuntView extends Application {
 		if (nbErrors == 0) {
 			dialog = new Alert(AlertType.INFORMATION);
 			dialog.setContentText("Congratulations !\nCurrent game ended successfully (no error)");
-		}
-		else {
+		} else {
 			dialog = new Alert(AlertType.WARNING);
 			dialog.setContentText("Current game ended with " + nbErrors + " errors");
 		}

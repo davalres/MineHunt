@@ -132,8 +132,8 @@ public class MineHuntModel implements IMineHuntModel {
 		return nbErreurs;
 	}
 
-	@Override
-	public void placerMineAleatoirement(int i, int j) {
+	
+	private void placerMineAleatoirement(int i, int j) {
 		Random r = new Random();
 		int rand = r.nextInt(100);
 		if (rand < pourcentDeMines) {

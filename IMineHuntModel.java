@@ -11,8 +11,7 @@ public interface IMineHuntModel {
   
   
   
-  //void commencerJeu();
-  void placerMineAleatoirement(int i, int j);
+  
   
   // Nombre de mines autour de la case cliquée
   int nbMinesAutour(int i, int j);
