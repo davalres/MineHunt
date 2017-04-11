@@ -18,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -39,6 +40,8 @@ public class MineHuntView extends Application {
 	private VBox root;
 	private TextField tfClicks, tfErrors;
 	private Button btnShowMines, btnNewGame;
+	private static final String IMG_BOMB = "file:src/s02/resources/bomb.png";
+	private static final String IMG_FLAG = "file:src/s02/resources/flag.png";
 	private GridPane gpTerrain = new GridPane(); // On doit le créer ici car on
 													// va la modifier dans une
 													// méthode
@@ -231,6 +234,7 @@ public class MineHuntView extends Application {
 
 	public void colorierEnRouge(CellButton btn) {
 		btn.setStyle("-fx-background-color: red;");
+		btn.setGraphic(new ImageView(IMG_BOMB));
 	}
 
 	public void afficherNbMinesAutour(CellButton btn, int nbMinesAutour) {
@@ -249,10 +253,12 @@ public class MineHuntView extends Application {
 
 	public void mettreUnDrapeau(CellButton btn) {
 		btn.setStyle("-fx-background-color: blue;");
+		btn.setGraphic(new ImageView(IMG_FLAG));
 	}
 
 	public void enleverDrapeau(CellButton btn) {
 		btn.setStyle("-fx-background-color: grey;");
+		btn.setGraphic(null);
 	}
 
 	public void ouvrirToutesLesCasesAutour(boolean[][] terrain, int[][] casesAutour) {
