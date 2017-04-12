@@ -2,6 +2,9 @@ package s02;
 
 import s02.MineHuntController;
 import s02.CellButton;
+
+import java.beans.EventHandler;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
@@ -35,7 +40,7 @@ public class MineHuntView extends Application {
 	private ShowMinesController smController;
 	private Scene scene;
 	private VBox root;
-	private Menu mnuSettings;
+	private Menu mnuFile;
 	private TextField tfClicks, tfErrors;
 	private Button btnShowMines, btnNewGame;
 	private static final String IMG_BOMB = "file:src/s02/resources/bomb.png";
@@ -78,7 +83,7 @@ public class MineHuntView extends Application {
 
 	// max: 67
 	public int getLargeur() {
-		return 10;
+		return 20;
 	}
 
 	public int getPourcentMines() {
@@ -99,9 +104,12 @@ public class MineHuntView extends Application {
 			// création des autres composants de la vue
 			Label lblTitle = lblTitle();
 			MenuBar mBar = new MenuBar();
-			mnuSettings = new Menu("Settings");
-			mnuSettings.setOnAction(sController);
-			mBar.getMenus().add(mnuSettings);
+			mnuFile = new Menu("File");
+			MenuItem itmSettings = new MenuItem("Settings");
+			itmSettings.setOnAction(sController);
+			//itmSettings.setOnAction();
+			mnuFile.getItems().add(itmSettings);
+			mBar.getMenus().add(mnuFile);
 			tfClicks = new TextField();
 			tfErrors = new TextField();
 			GridPane gpNombreDe = gpNombreDe();

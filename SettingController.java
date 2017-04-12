@@ -16,6 +16,7 @@ public class SettingController implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent event) {
 		// TODO Auto-generated method stub
 		System.out.println("JEAN");
+		view.CreateSettingsView();
 	}
 	
 	
