@@ -52,6 +52,7 @@ public class MineHuntModel implements IMineHuntModel {
 		if (colIndex <= 0 || ligIndex <= 0)
 			throw new IllegalArgumentException("Le tableau doit contenir au moins une case !");
 		terrain = new boolean[ligIndex][colIndex];
+		System.out.print("Nouveau terrain créé");
 	}
 
 	public void setDejaClique(int ligIndex, int colIndex) {

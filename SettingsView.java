@@ -14,6 +14,10 @@ import javafx.stage.Stage;
 public class SettingsView {
 	private MineHuntModel model;
 	private SettingController controller;
+	private TextField tfHauteur;
+	private TextField tfLargeur;
+	private TextField tfPourcentMines;
+	private Stage subStage;
 	
 	public SettingsView(MineHuntModel model, SettingController controller) {
 		this.model = model;
@@ -22,7 +26,7 @@ public class SettingsView {
 	
 	public void CreateSettingsView()
     {
-        Stage subStage = new Stage();
+        subStage = new Stage();
         subStage.setTitle("Settings");
                 
         GridPane root = new GridPane();
@@ -35,11 +39,12 @@ public class SettingsView {
         Label lblLargeur = new Label("Largeur ");
         Label lblPourcentMines = new Label("Pourcentage de mines ");
         
-        TextField tfHauteur = new TextField();
-        TextField tfLargeur = new TextField();
-        TextField tfPourcentMines = new TextField();
+        tfHauteur = new TextField();
+        tfLargeur = new TextField();
+        tfPourcentMines = new TextField();
         Button btnOk = new Button("OK");
         btnOk.setMinWidth(200);
+        btnOk.setOnAction((e)->{controller.btnOk();});
         root.getColumnConstraints().addAll(cc);
         root.add(lblHauteur, 0,0);
         root.add(lblLargeur, 0,1);
@@ -51,5 +56,26 @@ public class SettingsView {
         subStage.setScene(scene);
         subStage.show();
     }
+
+	public void setController(SettingController controller) {
+		this.controller = controller;
+	}
+	
+	public int getHauteur() {
+		return Integer.parseInt((tfHauteur.getText()));
+	}
+	
+	public int getLargeur() {
+		return Integer.parseInt((tfLargeur.getText()));
+	}
+	
+	public int getPourcentMines() {
+		return Integer.parseInt((tfPourcentMines.getText()));
+	}
+
+	public void close() {
+		
+		subStage.close(); // Ferme la fenêtre
+	}
 }
 

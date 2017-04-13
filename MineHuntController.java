@@ -23,10 +23,12 @@ public class MineHuntController {
 	public void initialize() {
 		try {
 			// Récupération des éléments de la vue
-			int hauteur = view.getHauteur();
-			int largeur = view.getLargeur();
-			int pourcentMines = view.getPourcentMines();
-
+//			int hauteur = view.getHauteur();
+//			int largeur = view.getLargeur();
+//			int pourcentMines = view.getPourcentMines();
+			int hauteur = model.getTerrain().length;
+			int largeur = model.getTerrain()[0].length;
+			int pourcentMines = model.getPourcentMines();
 			model.setTerrain(hauteur, largeur);
 			model.setDejaClique(hauteur, largeur);
 			model.setFlagged(hauteur, largeur);
@@ -48,6 +50,15 @@ public class MineHuntController {
 		System.out.println("Initialisation avec un terrain d'une largeur de " + model.getTerrain()[0].length
 				+ " * une hauteur de " + model.getTerrain().length + " mines " + "et avec un pourcentage de mines de "
 				+ model.getPourcentMines());
+	}
+
+	public void firstInit() {
+		int hauteur = 10;
+		int largeur = 10;
+		int pourcentMines = 10;
+		model.setTerrain(hauteur, largeur);
+		model.setPourcentMines(pourcentMines);
+		model.initialiser();
 	}
 	
 }

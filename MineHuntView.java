@@ -49,7 +49,9 @@ public class MineHuntView extends Application {
 													// va la modifier dans une
 													// méthode
 	private CellButton[][] cellButtons; // Tableau contenant tous nos boutons
-
+	private int hauteur;
+	private int largeur;
+	private int pourcentMines;
 	// CONSTRUCTEUR PAR DÉFAUT
 	// ------------------------------------------------------------------------------------------------
 	public MineHuntView() {
@@ -58,7 +60,8 @@ public class MineHuntView extends Application {
 
 	// INITIALIZATION
 	// ------------------------------------------------------------------------------------------------
-	public void initialize() {
+	
+	public void init() {
 		// Récupération des champs de la vue pour initialiser notre grille
 		mhView = new MineHuntView();
 		// On crée un model sans attributs, le controleur se chargera de faire
@@ -69,9 +72,15 @@ public class MineHuntView extends Application {
 		// On crée le lien entre la vue et le model
 		mhController = new MineHuntController(mhModel, this);
 		// On execute la méthode initializee() de notre controller
+		mhController.firstInit();
 		mhController.initialize();
+		
 		sView = new SettingsView(mhModel, sController);
-		sController = new SettingController(mhModel, sView);
+		sController = new SettingController(mhModel, sView, this);
+		sView.setController(sController);
+		
+		// Faire en sorte d'initialiser un terrain de 10x10
+		mhController.firstInit();
 		
 		System.out.println("Fin initialisation");
 	}
@@ -96,7 +105,7 @@ public class MineHuntView extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			// initialisation
-			initialize();
+			//initialize();
 
 			// création du container principal
 			root = root();
@@ -122,7 +131,7 @@ public class MineHuntView extends Application {
 
 			scene = new Scene(root);
 			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
+			primaryStage.setResizable(true);
 			primaryStage.setTitle("Mine Hunt");
 			primaryStage.show();
 
@@ -331,6 +340,10 @@ public class MineHuntView extends Application {
 
 	public void reinitLabelBtnShowMines() {
 		btnShowMines.setText("Show Mines");
+	}
+
+	public void resetTerrain() {
+		gpTerrain.getChildren().clear();
 	}
 
 }

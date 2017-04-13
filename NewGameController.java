@@ -24,12 +24,13 @@ public class NewGameController implements EventHandler<ActionEvent> {
 	// méthode appelée lorsque NewGame est pressé
 	@Override
 	public void handle(ActionEvent event) {
+		view.resetTerrain();
 		mhController.initialize();
+		//view.resetTerrain();
 		view.updateNbClicks(model.getNbClicks());
 		view.updateNbErrors(model.getNbErrors());
-		if (event.getSource() instanceof Button) // Pour éviter un bug lors de
-													// l'init
-			smController.setMineShowed(false);
+		
+		smController.setMineShowed(false);
 		view.reinitLabelBtnShowMines();
 		
 	}
