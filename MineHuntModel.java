@@ -1,13 +1,8 @@
 package s02;
 
-import java.util.Arrays;
 import java.util.Random;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.scene.control.Button;
-
 public class MineHuntModel implements IMineHuntModel {
-	// Attributs
 	private boolean[][] terrain;
 	private boolean[][] dejaClique;
 	private boolean[][] flagged;
@@ -16,7 +11,6 @@ public class MineHuntModel implements IMineHuntModel {
 	private int pourcentDeMines;
 	private int nbMines;
 	
-	// Constructeur pour l'initialisation
 	public MineHuntModel() {
 		terrain = null;
 		dejaClique = null;
@@ -26,9 +20,11 @@ public class MineHuntModel implements IMineHuntModel {
 		this.pourcentDeMines = 0;
 	}
 
+	/**
+	 * Initialise le tableau de mines
+	 */
 	@Override
 	public void initialiser() {
-		
 		nbMines = 0;
 		// On initialise que si le tableau existe
 		if (terrain != null) {
@@ -48,6 +44,11 @@ public class MineHuntModel implements IMineHuntModel {
 		System.out.println(nbMines + " mines présentes sur le terrain");
 	}
 
+	/**
+	 * Crée un terrain 
+	 * @param ligIndex
+	 * @param colIndex
+	 */
 	public void setTerrain(int ligIndex, int colIndex) {
 		if (colIndex <= 0 || ligIndex <= 0)
 			throw new IllegalArgumentException("Le tableau doit contenir au moins une case !");
@@ -55,85 +56,167 @@ public class MineHuntModel implements IMineHuntModel {
 		System.out.print("Nouveau terrain créé");
 	}
 
+	/**
+	 * Crée le tableau de cases dejaClique
+	 * @param ligIndex
+	 * @param colIndex
+	 */
 	public void setDejaClique(int ligIndex, int colIndex) {
 		if (colIndex <= 0 || ligIndex <= 0)
 			throw new IllegalArgumentException("Le tableau doit contenir au moins une case !");
 		dejaClique = new boolean[ligIndex][colIndex];
 	}
 
+	/**
+	 * Change la valeur d'une case dans le tableau dejaClique
+	 * @param ligIndex
+	 * @param colIndex
+	 * @param dejaClique true/false
+	 */
 	public void setUneCaseDejaClique(int ligIndex, int colIndex, boolean dejaClique) {
 		this.dejaClique[ligIndex][colIndex] = dejaClique;
 	}
 
+	/**
+	 * Crée le tableau de cases avec drapeau
+	 * @param ligIndex
+	 * @param colIndex
+	 */
 	public void setFlagged(int ligIndex, int colIndex) {
 		if (ligIndex <= 0 || colIndex <= 0)
 			throw new IllegalArgumentException("Le tableau doit contenir au moins une case !");
 		flagged = new boolean[ligIndex][colIndex];
 	}
 
+	/**
+	 * Modifie une case dans le tableau flagged
+	 * @param ligIndex
+	 * @param colIndex
+	 * @param flagged true/false
+	 */
 	public void setUneCaseFlagged(int ligIndex, int colIndex, boolean flagged) {
 		this.flagged[ligIndex][colIndex] = flagged;
 	}
 
+	/**
+	 * Modifie la variable nbClick
+	 * @param nbClicks
+	 */
 	public void setNbClicks(int nbClicks) {
 		if (nbClicks < 0)
 			throw new IllegalArgumentException("Le nombre de clicks ne peut pas être négatif");
 		this.nbClicks = nbClicks;
 	}
 
+	/**
+	 * Modiife la variable nbErreurs
+	 * @param nbErreurs
+	 */
 	public void setNbErreurs(int nbErreurs) {
 		if (nbErreurs < 0)
 			throw new IllegalArgumentException("Le nombre d'erreurs ne peut pas être négatif");
 		this.nbErreurs = nbErreurs;
 	}
 
+	/**
+	 * Modifie la variable pourcentMines
+	 * @param pourcentage
+	 */
 	public void setPourcentMines(int pourcentage) {
 		if (pourcentage < 0 || pourcentage > 100)
 			throw new IllegalArgumentException("Le pourcentage doit être compris entre 1 et 100");
 		pourcentDeMines = pourcentage;
 	}
 
+	/**
+	 * Retourne le terrain de mines
+	 * @return
+	 */
 	public boolean[][] getTerrain() {
 		return terrain;
 	}
 
+	/**
+	 * Retourne le nombre de lignes du terrain
+	 * @return
+	 */
 	public int getNbLines() {
 		return terrain.length;
 	}
 
+	/**
+	 * Retourne le nombre de colonnes du terrain
+	 * @return
+	 */
 	public int getNbCol() {
 		return terrain[0].length;
 	}
 
+	/**
+	 * Retourne le tableau de cases dejaClique
+	 * @return
+	 */
 	public boolean[][] getDejaClique() {
 		return dejaClique;
 	}
-
+	
+	/**
+	 * Retourne la valeur d'une case dans le tableau dejaClique
+	 * @param ligIndex
+	 * @param colIndex
+	 * @return
+	 */
 	public boolean getUneCaseDejaClique(int ligIndex, int colIndex) {
 		return dejaClique[ligIndex][colIndex];
 	}
 
+	/**
+	 * Retourne la valeur d'une case dans le tableau flagged
+	 * @param ligIndex
+	 * @param colIndex
+	 * @return
+	 */
 	public boolean getUneCaseFlagged(int ligIndex, int colIndex) {
 		return flagged[ligIndex][colIndex];
 	}
 
+	/**
+	 * Retourne le tableau 2D flagged
+	 * @return
+	 */
 	public boolean[][] getFlagged() {
 		return flagged;
 	}
 
+	/**
+	 * Retourne le pourcentage de mines
+	 * @return
+	 */
 	public int getPourcentMines() {
 		return pourcentDeMines;
 	}
 
+	/**
+	 * Retourne le nombre de clicks
+	 * @return
+	 */
 	public int getNbClicks() {
 		return nbClicks;
 	}
 
+	/**
+	 * Retourne le nombre d'erreurs
+	 * @return
+	 */
 	public int getNbErrors() {
 		return nbErreurs;
 	}
 
-	
+	/**
+	 * Place (peut-être) une mine avev pourcentMine pourcent de chance
+	 * @param i
+	 * @param j
+	 */
 	private void placerMineAleatoirement(int i, int j) {
 		Random r = new Random();
 		int rand = r.nextInt(100);
@@ -144,6 +227,10 @@ public class MineHuntModel implements IMineHuntModel {
 		}
 	}
 
+	/**
+	 * Retourne true si la partie est terminée, sinon false
+	 * @return true/false
+	 */
 	public boolean estTermine() {
 		// Si le nombre de clicks = nombre de cases sans bombes
 		// alors la partie est terminée
@@ -191,6 +278,13 @@ public class MineHuntModel implements IMineHuntModel {
 		return i == terrain.length - 1 && j == 0;
 	}
 
+	/**
+	 * Retourne un tableau contenant les index des cases autour de la case dont
+	 * les index sont donnés en paramètre
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	public int[][] casesAutour(int i, int j) {
 		int[][] r = new int[8][2];
 		// Initialisation avec des valeurs qu'on ne peut
@@ -256,6 +350,9 @@ public class MineHuntModel implements IMineHuntModel {
 		return terrain[i][j];
 	}
 
+	/**
+	 * Compte le nombre de mines autour de la mine dont l'index est donné en paramètre
+	 */
 	@Override
 	public int nbMinesAutour(int i, int j) {
 		int nbMine = 0;
@@ -300,7 +397,6 @@ public class MineHuntModel implements IMineHuntModel {
 			nbMine = estUneMine(i + 1, j) ? nbMine + 1 : nbMine;
 			nbMine = estUneMine(i + 1, j + 1) ? nbMine + 1 : nbMine;
 		} else {
-			// Dans le cas normal, vérifier toutes les cases autour
 			nbMine = estUneMine(i - 1, j) ? nbMine + 1 : nbMine;
 			nbMine = estUneMine(i - 1, j + 1) ? nbMine + 1 : nbMine;
 			nbMine = estUneMine(i, j + 1) ? nbMine + 1 : nbMine;
@@ -313,6 +409,9 @@ public class MineHuntModel implements IMineHuntModel {
 		return nbMine;
 	}
 
+	/**
+	 * Affiche dans la console le terrain de mines
+	 */
 	@Override
 	public void afficherTableau() {
 		String c;
@@ -325,6 +424,9 @@ public class MineHuntModel implements IMineHuntModel {
 		}
 	}
 
+	/**
+	 * Affiche le tableau de cases dejaClique
+	 */
 	public void afficherDejaClique() {
 		String c;
 		for (int i = 0; i < dejaClique.length; i++) {
@@ -335,11 +437,5 @@ public class MineHuntModel implements IMineHuntModel {
 			}
 			System.out.println();
 		}
-	}
-
-	public static void main(int[] args) {
-		
-	}
-	
-	
+	}	
 }
