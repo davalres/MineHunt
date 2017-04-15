@@ -30,7 +30,6 @@ import s02.SettingsView;
 public class MineHuntView extends Application {
 	// ATTRIBUTS DE L'OBJET VUE
 	// ------------------------------------------------------------------------------------------------
-	private MineHuntView mhView;
 	private SettingsView sView;
 	private SettingController sController;
 	private MineHuntModel mhModel;
@@ -45,88 +44,43 @@ public class MineHuntView extends Application {
 	private Button btnShowMines, btnNewGame;
 	private static final String IMG_BOMB = "file:src/s02/resources/bomb.png";
 	private static final String IMG_FLAG = "file:src/s02/resources/flag.png";
-	private GridPane gpTerrain = new GridPane(); // On doit le créer ici car on
-													// va la modifier dans une
-													// méthode
-	private CellButton[][] cellButtons; // Tableau contenant tous nos boutons
-	private int hauteur;
-	private int largeur;
-	private int pourcentMines;
-	// CONSTRUCTEUR PAR DÉFAUT
-	// ------------------------------------------------------------------------------------------------
-	public MineHuntView() {
-		System.out.println("Passage dans le constructeur par défaut");
-	}
+	private GridPane gpTerrain = new GridPane();
+	private CellButton[][] cellButtons;
 
-	// INITIALIZATION
-	// ------------------------------------------------------------------------------------------------
-	
 	public void init() {
-		// Récupération des champs de la vue pour initialiser notre grille
-		mhView = new MineHuntView();
-		// On crée un model sans attributs, le controleur se chargera de faire
-		// le lien
 		mhModel = new MineHuntModel();
 		gpTerrain = new GridPane();
 		tController = new TerrainController(mhModel, this);
-		// On crée le lien entre la vue et le model
 		mhController = new MineHuntController(mhModel, this);
-		// On execute la méthode initializee() de notre controller
-		mhController.firstInit();
+		mhController.firstInit(); // pour générer un terrain quand on lance le
+									// programme
 		mhController.initialize();
-		
 		sView = new SettingsView(mhModel, sController);
 		sController = new SettingController(mhModel, sView, this);
 		sView.setController(sController);
-		
-		// Faire en sorte d'initialiser un terrain de 10x10
-		mhController.firstInit();
-		
 		System.out.println("Fin initialisation");
 	}
 
-	// max: 28
-	public int getHauteur() {
-		return 20;
-	}
-
-	// max: 67
-	public int getLargeur() {
-		return 20;
-	}
-
-	public int getPourcentMines() {
-		return 10;
-	}
-
 	// MÉTHODE PRINCIPALE
-	// ------------------------------------------------------------------------------------------------
+	// -------------------------------------------------
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// initialisation
-			//initialize();
-
 			// création du container principal
 			root = root();
-
-			// création des autres composants de la vue
 			Label lblTitle = lblTitle();
 			MenuBar mBar = new MenuBar();
 			mnuFile = new Menu("File");
 			MenuItem itmSettings = new MenuItem("Settings");
 			itmSettings.setOnAction(sController);
-			//itmSettings.setOnAction();
 			mnuFile.getItems().add(itmSettings);
 			mBar.getMenus().add(mnuFile);
 			tfClicks = new TextField();
 			tfErrors = new TextField();
 			GridPane gpNombreDe = gpNombreDe();
-			// tController déjà créé dans initialize();
 			smController = new ShowMinesController(mhModel, this);
 			HBox hbButtons = hbButtons();
 			createControllerNewGame();
-			// Place tous les composants dans le container principal
 			root.getChildren().addAll(mBar, lblTitle, gpNombreDe, gpTerrain, hbButtons);
 
 			scene = new Scene(root);
@@ -138,23 +92,39 @@ public class MineHuntView extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
+	/**
+	 * Crée le controleur du bouton New Game
+	 */
 	public void createControllerNewGame() {
 		ngController = new NewGameController(mhModel, this, mhController, smController);
 		btnNewGame.setOnAction(ngController);
 	}
 
+	/**
+	 * Met à jour le TextField nbClicks
+	 * @param nbClicks
+	 */
 	public void updateNbClicks(int nbClicks) {
 		tfClicks.setText(Integer.toString(nbClicks));
 	}
 
+	/**
+	 * Met à jour le TextField nbErrors
+	 * @param nbErrors
+	 */
 	public void updateNbErrors(int nbErrors) {
 		tfErrors.setText(Integer.toString(nbErrors));
 	}
 
+	/**
+	 * Place tous les CellButtons en fonction de la hauteur et
+	 * et de la largeur en paramètre
+	 * @param ligIndex
+	 * @param colIndex
+	 */
 	public void creerTerrain(int ligIndex, int colIndex) {
 		// Tableau contenant les boutons
 		cellButtons = new CellButton[ligIndex][colIndex];
@@ -170,8 +140,7 @@ public class MineHuntView extends Application {
 				CellButton cb = new CellButton(i, j);
 				cb.setMinSize(25, 25);
 				cb.setMaxSize(25, 25);
-				cb.setStyle("-fx-font-size: 12px; -fx-background-color: grey;"
-						+ "-fx-border-radius: null;");
+				cb.setStyle("-fx-font-size: 12px; -fx-background-color: grey;" + "-fx-border-radius: null;");
 				cb.setPadding(new Insets(1, 1, 1, 1));
 				cb.setOnMouseClicked(event -> {
 					tController.gererClick(event);
@@ -186,16 +155,10 @@ public class MineHuntView extends Application {
 		}
 	}
 
-	public void setTerrain(GridPane gpTerrain) {
-		this.gpTerrain = gpTerrain;
-
-		System.out.println("Attribut gpTerrain mis à jour, il n'est donc plus = à null");
-	}
-
 	private VBox root() {
 		root = new VBox();
 		root.setAlignment(Pos.TOP_CENTER);
-		//root.setPadding(new Insets(10, 10, 10, 10));
+		// root.setPadding(new Insets(10, 10, 10, 10));
 		return root;
 	}
 
@@ -252,40 +215,50 @@ public class MineHuntView extends Application {
 		hbButtons.getChildren().addAll(btnShowMines, btnNewGame);
 		return hbButtons;
 	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
+	
+	/**
+	 * Met le backgrount du CellButton en rouge (bombe)
+	 * @param btn
+	 */
 	public void colorierEnRouge(CellButton btn) {
 		btn.setStyle("-fx-background-color: red;");
 		btn.setGraphic(new ImageView(IMG_BOMB));
 	}
 
+	/**
+	 * Affiche le nombre de mines autour sur le bouton
+	 * @param btn
+	 * @param nbMinesAutour
+	 */
 	public void afficherNbMinesAutour(CellButton btn, int nbMinesAutour) {
 		btn.setStyle("-fx-background-color: white;");
 		if (nbMinesAutour > 0)
 			btn.setText(Integer.toString(nbMinesAutour));
 	}
 
-	public void incrementerErrors(int nbErrors) {
-		tfErrors.setText(Integer.toString(nbErrors));
-	}
-
-	public void incrementerClicks(int nbClicks) {
-		tfClicks.setText(Integer.toString(nbClicks));
-	}
-
+	/**
+	 * Place un drapeau sur le bouton
+	 * @param btn
+	 */
 	public void mettreUnDrapeau(CellButton btn) {
 		btn.setStyle("-fx-background-color: blue;");
 		btn.setGraphic(new ImageView(IMG_FLAG));
 	}
 
+	/**
+	 * Enlève un drapeau sur le bouton
+	 * @param btn
+	 */
 	public void enleverDrapeau(CellButton btn) {
 		btn.setStyle("-fx-background-color: grey;");
 		btn.setGraphic(null);
 	}
 
+	/**
+	 * Ouvre toutes les cases présentent dans la tableau casesAutour
+	 * @param terrain
+	 * @param casesAutour
+	 */
 	public void ouvrirToutesLesCasesAutour(boolean[][] terrain, int[][] casesAutour) {
 		for (int i = 0; i < casesAutour.length; i++) {
 			if ((casesAutour[i][0] >= 0 && casesAutour[i][0] < terrain.length)
@@ -296,6 +269,11 @@ public class MineHuntView extends Application {
 		}
 	}
 
+	/**
+	 * Montre toutes les mines du terrain
+	 * @param mines
+	 * @param dejaClique
+	 */
 	public void montrerMines(boolean[][] mines, boolean[][] dejaClique) {
 		// tableau mines et cellButtons ont la même forme
 		for (int i = 0; i < mines.length; i++) {
@@ -307,6 +285,11 @@ public class MineHuntView extends Application {
 		}
 	}
 
+	/**
+	 * Cache toutes les mines du terrain
+	 * @param mines
+	 * @param dejaClique
+	 */
 	public void cacherMines(boolean[][] mines, boolean[][] dejaClique) {
 		for (int i = 0; i < mines.length; i++) {
 			for (int j = 0; j < mines[0].length; j++) {
@@ -317,6 +300,9 @@ public class MineHuntView extends Application {
 		}
 	}
 
+	/**
+	 * Change le text du bouton ShowMines
+	 */
 	public void switchLabelBtnShowMines() {
 		if (btnShowMines.getText() == "Show Mines")
 			btnShowMines.setText("Hide Mines");
@@ -324,6 +310,10 @@ public class MineHuntView extends Application {
 			btnShowMines.setText("Show Mines");
 	}
 
+	/**
+	 * Termine la partie et affiche le nombre d'erreurs
+	 * @param nbErrors
+	 */
 	public void terminerPartie(int nbErrors) {
 		Alert dialog;
 		if (nbErrors == 0) {
@@ -338,10 +328,16 @@ public class MineHuntView extends Application {
 		dialog.showAndWait();
 	}
 
+	/**
+	 * Met le texte du bouton ShowMine dans son état initial
+	 */
 	public void reinitLabelBtnShowMines() {
 		btnShowMines.setText("Show Mines");
 	}
 
+	/**
+	 * Supprime les éléments du gridpane Terrain
+	 */
 	public void resetTerrain() {
 		gpTerrain.getChildren().clear();
 	}
