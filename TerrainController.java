@@ -60,13 +60,13 @@ public class TerrainController {
 				model.setNbErreurs(model.getNbErrors() + 1);
 				System.out.println("clic sur une bombe");
 				view.colorierEnRouge(btn);
-				view.incrementerErrors(model.getNbErrors());
+				view.updateNbErrors((model.getNbErrors()));
 			} else {
 				//System.out.println("colIndex " + btn.getColIndex() + ", ligIndex " + btn.getLigIndex());
 				model.setUneCaseDejaClique(ligIndex, colIndex, true);
 				model.setNbClicks(model.getNbClicks() + 1);
 				view.afficherNbMinesAutour(btn, model.nbMinesAutour(ligIndex, colIndex));
-				view.incrementerClicks(model.getNbClicks());
+				view.updateNbClicks((model.getNbClicks()));
 				if (model.nbMinesAutour(ligIndex, colIndex) == 0) {
 					view.ouvrirToutesLesCasesAutour(model.getTerrain(), model.casesAutour(ligIndex, colIndex));
 				}

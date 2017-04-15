@@ -12,9 +12,18 @@ public class CellButton extends Button {
     this.colIndex = colIndex;
   }
 
+  /**
+   * Retourne l'index de la ligne
+   * @return
+   */
   public int getLigIndex() {
     return ligIndex;
   }
+  
+  /**
+   * Retourne l'index de la colonne
+   * @return
+   */
   public int getColIndex() {
     return colIndex;
   }

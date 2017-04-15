@@ -2,34 +2,19 @@ package s02;
 
 import s02.MineHuntController;
 import s02.CellButton;
-
-import java.beans.EventHandler;
-
+import s02.SettingsView;
+import javafx.geometry.*;
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import s02.SettingsView;
+
 
 public class MineHuntView extends Application {
-	// ATTRIBUTS DE L'OBJET VUE
-	// ------------------------------------------------------------------------------------------------
 	private SettingsView sView;
 	private SettingController sController;
 	private MineHuntModel mhModel;

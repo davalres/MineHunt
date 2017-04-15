@@ -1,16 +1,11 @@
 package s02;
 
-import javafx.geometry.Insets;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import s02.MineHuntModel;
 import s02.MineHuntView;
 
 public class MineHuntController {
 	private MineHuntModel model;
 	private MineHuntView view;
-	private TerrainController tController;
 
 	// CONSTRUCTEUR
 	// ------------------------------------------------------------------------------------------------
@@ -19,13 +14,8 @@ public class MineHuntController {
 		this.model = model;
 	}
 
-	// Initialise le modèle
 	public void initialize() {
 		try {
-			// Récupération des éléments de la vue
-//			int hauteur = view.getHauteur();
-//			int largeur = view.getLargeur();
-//			int pourcentMines = view.getPourcentMines();
 			int hauteur = model.getTerrain().length;
 			int largeur = model.getTerrain()[0].length;
 			int pourcentMines = model.getPourcentMines();
@@ -35,16 +25,11 @@ public class MineHuntController {
 			model.setPourcentMines(pourcentMines);
 			model.setNbClicks(0);
 			model.setNbErreurs(0);
-			model.initialiser(); // Crée le champs de mines
-
+			model.initialiser();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 		
-		// NbLines -> hauteur
-		// NbCol -> largeur
-		// Pour placer les boutons, on a juste besoin de connaître
-		// le nombre de lignes et de colonnes
 		view.creerTerrain(model.getNbLines(), model.getNbCol());
 		
 		System.out.println("Initialisation avec un terrain d'une largeur de " + model.getTerrain()[0].length
@@ -52,6 +37,10 @@ public class MineHuntController {
 				+ model.getPourcentMines());
 	}
 
+	/**
+	 * Cette méthode sert à définir un terrain lors de la première initialisation
+	 * ensuite, l'utilisateur pourra définir cela lui-même
+	 */
 	public void firstInit() {
 		int hauteur = 10;
 		int largeur = 10;

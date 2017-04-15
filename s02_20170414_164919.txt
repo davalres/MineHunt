@@ -1,0 +1,22 @@
+WARNING - 16:49:19: First conversion pass
+ERROR - 16:49:19: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+ERROR - 16:49:19: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+WARNING - 16:49:31: Convert s02
+WARNING - 16:49:31: First conversion pass
+ERROR - 16:49:31: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+ERROR - 16:49:31: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+WARNING - 16:49:38: Convert s02
+WARNING - 16:49:38: First conversion pass
+ERROR - 16:49:38: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+ERROR - 16:49:38: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+WARNING - 16:50:47: Convert s02
+WARNING - 16:50:47: First conversion pass
+ERROR - 16:50:47: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+ERROR - 16:50:47: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+WARNING - 16:51:08: Convert s02
+WARNING - 16:51:08: First conversion pass
+ERROR - 16:51:08: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+ERROR - 16:51:08: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+WARNING - 16:51:47: Convert s02
+WARNING - 16:51:47: First conversion pass
+ERROR - 16:51:47: java.net.MalformedURLException: unknown protocol: pathmap
