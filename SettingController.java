@@ -13,12 +13,17 @@ public class SettingController implements EventHandler<ActionEvent> {
 	}
 
 	@Override
+	/**
+	 * Lorsque le menu Setting est pressé
+	 */
 	public void handle(ActionEvent event) {
-		// TODO Auto-generated method stub
 		System.out.println("JEAN");
 		view.CreateSettingsView();
 	}
 
+	/**
+	 * Lorsque le bouton "Ok" de la vue Seting est pressé
+	 */
 	public void btnOk() {
 		int hauteur = view.getHauteur();
 		int largeur = view.getLargeur();

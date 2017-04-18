@@ -16,6 +16,9 @@ public class ShowMinesController implements EventHandler<ActionEvent> {
 	}
 
 	@Override
+	/**
+	 * Lorsque l'on clique sur "Show Mines"
+	 */
 	public void handle(ActionEvent MouseEvent) {
 		System.out.println("Clic sur show mines");
 		// Si les mines ne sont pas montrées
@@ -35,6 +38,10 @@ public class ShowMinesController implements EventHandler<ActionEvent> {
 		}
 	}
 	
+	/**
+	 * Réinitialise l'attribut "minesShowed" lors d'une nouvelle partie
+	 * @param val
+	 */
 	public void setMineShowed(boolean val) {
 		minesShowed = val;
 	}

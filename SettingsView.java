@@ -61,21 +61,35 @@ public class SettingsView {
 		this.controller = controller;
 	}
 	
+	/**
+	 * Retourne le contenu du champ texte "hauteur"
+	 * @return
+	 */
 	public int getHauteur() {
 		return Integer.parseInt((tfHauteur.getText()));
 	}
 	
+	/**
+	 * Retourne le contenu du champ texte "largeur"
+	 * @return
+	 */
 	public int getLargeur() {
 		return Integer.parseInt((tfLargeur.getText()));
 	}
 	
+	/**
+	 * Retourne le contenu du champ texte "pourcentage de mines"
+	 * @return
+	 */
 	public int getPourcentMines() {
 		return Integer.parseInt((tfPourcentMines.getText()));
 	}
 
+	/**
+	 * Ferme la fenêtre
+	 */
 	public void close() {
-		
-		subStage.close(); // Ferme la fenêtre
+		subStage.close();
 	}
 }
 

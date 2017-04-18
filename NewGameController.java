@@ -11,8 +11,6 @@ public class NewGameController implements EventHandler<ActionEvent> {
 	private MineHuntController mhController;
 	private ShowMinesController smController;
 
-	// CONSTRUCTEUR
-	// ------------------------------------------------------------------------------------------------
 	public NewGameController(MineHuntModel model, MineHuntView view, MineHuntController mhController,
 			ShowMinesController smController) {
 		this.model = model;
@@ -21,17 +19,16 @@ public class NewGameController implements EventHandler<ActionEvent> {
 		this.smController = smController;
 	}
 
-	// méthode appelée lorsque NewGame est pressé
 	@Override
+	/**
+	 * Méthode appelée lorsque "New Game" est pressé
+	 */
 	public void handle(ActionEvent event) {
 		view.resetTerrain();
 		mhController.initialize();
-		//view.resetTerrain();
 		view.updateNbClicks(model.getNbClicks());
 		view.updateNbErrors(model.getNbErrors());
-		
 		smController.setMineShowed(false);
 		view.reinitLabelBtnShowMines();
-		
 	}
 }
