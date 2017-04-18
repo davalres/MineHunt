@@ -1,6 +1,0 @@
-WARNING - 16:51:08: First conversion pass
-ERROR - 16:51:08: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
-ERROR - 16:51:08: org.xml.sax.SAXParseExceptionpublicId: /IHM/src/s02/CellButton.java; systemId: file:///IHM/src/s02/CellButton.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
-WARNING - 16:51:47: Convert s02
-WARNING - 16:51:47: First conversion pass
-ERROR - 16:51:47: java.net.MalformedURLException: unknown protocol: pathmap
