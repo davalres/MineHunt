@@ -1,4 +1,4 @@
-package s02;
+﻿package s02;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -86,7 +86,7 @@ public class SettingsView {
 	}
 
 	/**
-	 * Ferme la fen�tre
+	 * Ferme la fenêtre
 	 */
 	public void close() {
 		subStage.close();

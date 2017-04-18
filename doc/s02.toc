@@ -6,23 +6,22 @@
 \contentsline {subsubsection}{\numberline {2.1.1}Vue principale}{1}
 \contentsline {subsubsection}{\numberline {2.1.2}Settings}{1}
 \contentsline {subsubsection}{\numberline {2.1.3}Vue principale avec un terrain plus grand en cours de partie}{2}
-\contentsline {subsection}{\numberline {2.2}Graphes de sc\IeC {\`e}ne}{2}
+\contentsline {subsection}{\numberline {2.2}Graphes de scène}{2}
 \contentsline {subsubsection}{\numberline {2.2.1}Vue principale}{2}
 \contentsline {subsubsection}{\numberline {2.2.2}Settings}{3}
-\contentsline {subsection}{\numberline {2.3}Diagramme UML}{3}
-\contentsline {subsection}{\numberline {2.4}Description des classes}{3}
-\contentsline {subsection}{\numberline {2.5}Fonctionnalit\IeC {\'e} impl\IeC {\'e}ment\IeC {\'e}es}{4}
-\contentsline {subsection}{\numberline {2.6}Code (fichiers \emph {.java})}{4}
-\contentsline {subsubsection}{\numberline {2.6.1}Cellbutton.java}{4}
-\contentsline {subsubsection}{\numberline {2.6.2}IMineHuntController.java}{4}
-\contentsline {subsubsection}{\numberline {2.6.3}MineHuntController.java}{4}
-\contentsline {subsubsection}{\numberline {2.6.4}MineHuntModel.java}{4}
-\contentsline {subsubsection}{\numberline {2.6.5}MineHuntView.java}{5}
-\contentsline {subsubsection}{\numberline {2.6.6}NewGameController.java}{5}
-\contentsline {subsubsection}{\numberline {2.6.7}SettingController.java}{5}
-\contentsline {subsubsection}{\numberline {2.6.8}SettingView.java}{5}
-\contentsline {subsubsection}{\numberline {2.6.9}ShowMinesController.java}{5}
-\contentsline {subsubsection}{\numberline {2.6.10}TerrainController.java}{5}
-\contentsline {section}{\numberline {3}Conclusion}{5}
-\contentsline {subsection}{\numberline {3.1}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{5}
-\contentsline {subsection}{\numberline {3.2}Id\IeC {\'e}es d'am\IeC {\'e}lioration}{5}
+\contentsline {subsection}{\numberline {2.3}Description des classes}{3}
+\contentsline {subsection}{\numberline {2.4}Fonctionnalité implémentées}{4}
+\contentsline {subsection}{\numberline {2.5}Code (fichiers \emph {.java})}{4}
+\contentsline {subsubsection}{\numberline {2.5.1}Cellbutton.java}{4}
+\contentsline {subsubsection}{\numberline {2.5.2}IMineHuntModel.java}{5}
+\contentsline {subsubsection}{\numberline {2.5.3}MineHuntController.java}{5}
+\contentsline {subsubsection}{\numberline {2.5.4}MineHuntModel.java}{6}
+\contentsline {subsubsection}{\numberline {2.5.5}MineHuntView.java}{13}
+\contentsline {subsubsection}{\numberline {2.5.6}NewGameController.java}{18}
+\contentsline {subsubsection}{\numberline {2.5.7}SettingController.java}{18}
+\contentsline {subsubsection}{\numberline {2.5.8}SettingsView.java}{19}
+\contentsline {subsubsection}{\numberline {2.5.9}ShowMinesController.java}{20}
+\contentsline {subsubsection}{\numberline {2.5.10}TerrainController.java}{21}
+\contentsline {section}{\numberline {3}Conclusion}{23}
+\contentsline {subsection}{\numberline {3.1}Difficultés rencontrées}{23}
+\contentsline {subsection}{\numberline {3.2}Idées d'amélioration}{23}

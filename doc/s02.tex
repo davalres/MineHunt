@@ -81,8 +81,7 @@
 {\LARGE David Alvarez \hspace{2cm}Luca Moos}\\% Auteurs
 \vspace{0.9cm}
 {\Large \today}\\
-\vspace{2 cm}
-{\small \textbf Soucieux de l'environnement, nous avons réduit les marges de ce document au minimum afin d'économiser quelques feuilles A4}
+%\vspace{2 cm}
 \end{center}
 \vfill
 \tableofcontents
@@ -138,7 +137,6 @@ Voici le graphe de scène de \emph{Settings}
 \includegraphics[width=\textwidth]{./gds_settings.pdf}
 \caption{Graphe de scène de \emph{Settings}}
 \end{figure}
-\subsection{Diagramme UML}
 \subsection{Description des classes}
 \begin{itemize}
 \item Cellbutton
@@ -180,8 +178,11 @@ Voici la liste des éléments que nous avons implémenter dans notre application
 \subsection{Code (fichiers \emph{.java})}
 Ici, nous verrons le code de chacune des classes et expliquerons plus en détail leurs méthodes.
 \subsubsection{Cellbutton.java}
-\subsubsection{IMineHuntController.java}
+\lstinputlisting[]{../CellButton.java}
+\subsubsection{IMineHuntModel.java}
+\lstinputlisting[]{../IMineHuntModel.java}
 \subsubsection{MineHuntController.java}
+\lstinputlisting[]{../MineHuntController.java}
 \subsubsection{MineHuntModel.java}
 Le modèle contient trois attributs principaux :
 \begin{description}
@@ -189,13 +190,19 @@ Le modèle contient trois attributs principaux :
 \item[dejaClique] Tableau 2D de booléens représentant l'état actuel des cases. \emph{true} si la case à déjà été cliquée, sinon \emph{false}
 \item[flagged] Tableau 2D de booléens représentant les drapeaux sur le terrain. \emph{true} si un drapeau est présent sur la case, sinon \emph{false}
 \end{description}
+\lstinputlisting[]{../MineHuntModel.java}
 \subsubsection{MineHuntView.java}
+\lstinputlisting[]{../MineHuntView.java}
 \subsubsection{NewGameController.java}
+\lstinputlisting[]{../NewGameController.java}
 \subsubsection{SettingController.java}
-\subsubsection{SettingView.java}
+\lstinputlisting[]{../SettingController.java}
+\subsubsection{SettingsView.java}
+\lstinputlisting[]{../SettingsView.java}
 \subsubsection{ShowMinesController.java}
+\lstinputlisting[]{../ShowMinesController.java}
 \subsubsection{TerrainController.java}
-
+\lstinputlisting[]{../TerrainController.java}
 \section{Conclusion}
 Le développement de cette application fut très enrichissant. D'une part, cela nous a permis de nous familiariser avec beaucoup de composants \emph{JavaFX} et d'autre part avec l'architecture MVC et la gestion des événements.
 \subsection{Difficultés rencontrées}
@@ -211,5 +218,4 @@ Le simple fait que nous avons codés tout nos tableaux en mettant \emph{[ligInde
 \item Dans la fenêtre \emph{Settings}, n'autoriser que les numéros dans les champs texte, ou remplacer les champs texte par des \emph{Spinners}
 \item Sauvegarder la partie en cours
 \end{itemize}
-
 \end{document}

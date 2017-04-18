@@ -1,4 +1,4 @@
-package s02;
+﻿package s02;
 
 public interface IMineHuntModel {
   int nbMinesAutour(int i, int j);

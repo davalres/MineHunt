@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import s02.MineHuntModel;
@@ -21,7 +21,7 @@ public class ShowMinesController implements EventHandler<ActionEvent> {
 	 */
 	public void handle(ActionEvent MouseEvent) {
 		System.out.println("Clic sur show mines");
-		// Si les mines ne sont pas montrées
+		// Si les mines ne sont pas montrÃ©es
 		if (!minesShowed) {
 			boolean[][] mines = model.getTerrain();
 			boolean[][] dejaClique = model.getDejaClique();
@@ -29,7 +29,7 @@ public class ShowMinesController implements EventHandler<ActionEvent> {
 			view.switchLabelBtnShowMines();
 			minesShowed = true;
 		} else {
-			// cacher les mines sur lesquelles on a pas encore cliqué
+			// cacher les mines sur lesquelles on a pas encore cliquÃ©
 			boolean[][] mines = model.getTerrain();
 			boolean[][] dejaClique = model.getDejaClique();
 			view.cacherMines(mines, dejaClique);
@@ -39,7 +39,7 @@ public class ShowMinesController implements EventHandler<ActionEvent> {
 	}
 	
 	/**
-	 * Réinitialise l'attribut "minesShowed" lors d'une nouvelle partie
+	 * RÃ©initialise l'attribut "minesShowed" lors d'une nouvelle partie
 	 * @param val
 	 */
 	public void setMineShowed(boolean val) {

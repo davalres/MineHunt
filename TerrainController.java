@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -49,7 +49,7 @@ public class TerrainController {
 	}
 
 	/**
-	 * Gère le comportement de la case cliquée
+	 * GÃ¨re le comportement de la case cliquÃ©e
 	 * 
 	 * @param btn
 	 */
@@ -59,7 +59,7 @@ public class TerrainController {
 		// si la case n'est pas flagged
 		if (model.getUneCaseFlagged(ligIndex, colIndex) == false) {
 			if (model.getUneCaseDejaClique(ligIndex, colIndex) == true) {}
-				// si la case n'a pas été cliquée
+				// si la case n'a pas Ã©tÃ© cliquÃ©e
 			else if (model.estUneMine(ligIndex, colIndex)) {
 				model.setUneCaseDejaClique(ligIndex, colIndex, true);
 				model.setNbErreurs(model.getNbErrors() + 1);

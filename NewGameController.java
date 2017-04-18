@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 
 import s02.MineHuntController;
 import javafx.event.ActionEvent;
@@ -21,7 +21,7 @@ public class NewGameController implements EventHandler<ActionEvent> {
 
 	@Override
 	/**
-	 * Méthode appelée lorsque "New Game" est pressé
+	 * MÃ©thode appelÃ©e lorsque "New Game" est pressÃ©
 	 */
 	public void handle(ActionEvent event) {
 		view.resetTerrain();

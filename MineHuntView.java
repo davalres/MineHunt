@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 
 import s02.MineHuntController;
 import s02.CellButton;
@@ -32,12 +32,16 @@ public class MineHuntView extends Application {
 	private GridPane gpTerrain = new GridPane();
 	private CellButton[][] cellButtons;
 
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
 	public void init() {
 		mhModel = new MineHuntModel();
 		gpTerrain = new GridPane();
 		tController = new TerrainController(mhModel, this);
 		mhController = new MineHuntController(mhModel, this);
-		mhController.firstInit(); // pour générer un terrain quand on lance le
+		mhController.firstInit(); // pour gÃ©nÃ©rer un terrain quand on lance le
 									// programme
 		mhController.initialize();
 		sView = new SettingsView(mhModel, sController);
@@ -46,12 +50,12 @@ public class MineHuntView extends Application {
 		System.out.println("Fin initialisation");
 	}
 
-	// MÉTHODE PRINCIPALE
+	// MÃ‰THODE PRINCIPALE
 	// -------------------------------------------------
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// création du container principal
+			// crÃ©ation du container principal
 			root = root();
 			Label lblTitle = lblTitle();
 			MenuBar mBar = new MenuBar();
@@ -81,7 +85,7 @@ public class MineHuntView extends Application {
 	}
 
 	/**
-	 * Crée le controleur du bouton New Game
+	 * CrÃ©e le controleur du bouton New Game
 	 */
 	public void createControllerNewGame() {
 		ngController = new NewGameController(mhModel, this, mhController, smController);
@@ -89,7 +93,7 @@ public class MineHuntView extends Application {
 	}
 
 	/**
-	 * Met à jour le TextField nbClicks
+	 * Met Ã  jour le TextField nbClicks
 	 * @param nbClicks
 	 */
 	public void updateNbClicks(int nbClicks) {
@@ -97,7 +101,7 @@ public class MineHuntView extends Application {
 	}
 
 	/**
-	 * Met à jour le TextField nbErrors
+	 * Met Ã  jour le TextField nbErrors
 	 * @param nbErrors
 	 */
 	public void updateNbErrors(int nbErrors) {
@@ -106,14 +110,14 @@ public class MineHuntView extends Application {
 
 	/**
 	 * Place tous les CellButtons en fonction de la hauteur et
-	 * et de la largeur en paramètre
+	 * et de la largeur en paramÃ¨tre
 	 * @param ligIndex
 	 * @param colIndex
 	 */
 	public void creerTerrain(int ligIndex, int colIndex) {
 		// Tableau contenant les boutons
 		cellButtons = new CellButton[ligIndex][colIndex];
-		// Controleur contrôlant l'appui sur les boutons
+		// Controleur contrÃ´lant l'appui sur les boutons
 		gpTerrain.setHgap(2);
 		gpTerrain.setVgap(2);
 		gpTerrain.setPadding(new Insets(10, 10, 10, 10));
@@ -134,7 +138,7 @@ public class MineHuntView extends Application {
 				// Ajout du bouton dans le tableau
 				cellButtons[cb.getLigIndex()][cb.getColIndex()] = cb;
 				// Ajout dans la gridPane (Affichage graphique)
-				gpTerrain.add(cb, j, i); // Cette méthode fonctionne à l'inverse
+				gpTerrain.add(cb, j, i); // Cette mÃ©thode fonctionne Ã  l'inverse
 											// de ma logique
 			}
 		}
@@ -231,7 +235,7 @@ public class MineHuntView extends Application {
 	}
 
 	/**
-	 * Enlève un drapeau sur le bouton
+	 * EnlÃ¨ve un drapeau sur le bouton
 	 * @param btn
 	 */
 	public void enleverDrapeau(CellButton btn) {
@@ -240,7 +244,7 @@ public class MineHuntView extends Application {
 	}
 
 	/**
-	 * Ouvre toutes les cases présentent dans la tableau casesAutour
+	 * Ouvre toutes les cases prÃ©sentent dans la tableau casesAutour
 	 * @param terrain
 	 * @param casesAutour
 	 */
@@ -260,7 +264,7 @@ public class MineHuntView extends Application {
 	 * @param dejaClique
 	 */
 	public void montrerMines(boolean[][] mines, boolean[][] dejaClique) {
-		// tableau mines et cellButtons ont la même forme
+		// tableau mines et cellButtons ont la mÃªme forme
 		for (int i = 0; i < mines.length; i++) {
 			for (int j = 0; j < mines[0].length; j++) {
 				if (mines[i][j] == true && dejaClique[i][j] == false) {
@@ -314,14 +318,14 @@ public class MineHuntView extends Application {
 	}
 
 	/**
-	 * Met le texte du bouton ShowMine dans son état initial
+	 * Met le texte du bouton ShowMine dans son Ã©tat initial
 	 */
 	public void reinitLabelBtnShowMines() {
 		btnShowMines.setText("Show Mines");
 	}
 
 	/**
-	 * Supprime les éléments du gridpane Terrain
+	 * Supprime les Ã©lÃ©ments du gridpane Terrain
 	 */
 	public void resetTerrain() {
 		gpTerrain.getChildren().clear();

@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 
 import java.util.Random;
 
@@ -37,15 +37,15 @@ public class MineHuntModel implements IMineHuntModel {
 				}
 			}
 			afficherTableau();
-			System.out.println("Terrain initialisé");
+			System.out.println("Terrain initialisÃ©");
 		} else {
-			System.out.println("Terrain non-initialisé, terrain = null");
+			System.out.println("Terrain non-initialisÃ©, terrain = null");
 		}
-		System.out.println(nbMines + " mines présentes sur le terrain");
+		System.out.println(nbMines + " mines prÃ©sentes sur le terrain");
 	}
 
 	/**
-	 * Crée un terrain 
+	 * CrÃ©e un terrain 
 	 * @param ligIndex
 	 * @param colIndex
 	 */
@@ -53,11 +53,11 @@ public class MineHuntModel implements IMineHuntModel {
 		if (colIndex <= 0 || ligIndex <= 0)
 			throw new IllegalArgumentException("Le tableau doit contenir au moins une case !");
 		terrain = new boolean[ligIndex][colIndex];
-		System.out.print("Nouveau terrain créé");
+		System.out.print("Nouveau terrain crÃ©Ã©");
 	}
 
 	/**
-	 * Crée le tableau de cases dejaClique
+	 * CrÃ©e le tableau de cases dejaClique
 	 * @param ligIndex
 	 * @param colIndex
 	 */
@@ -78,7 +78,7 @@ public class MineHuntModel implements IMineHuntModel {
 	}
 
 	/**
-	 * Crée le tableau de cases avec drapeau
+	 * CrÃ©e le tableau de cases avec drapeau
 	 * @param ligIndex
 	 * @param colIndex
 	 */
@@ -104,7 +104,7 @@ public class MineHuntModel implements IMineHuntModel {
 	 */
 	public void setNbClicks(int nbClicks) {
 		if (nbClicks < 0)
-			throw new IllegalArgumentException("Le nombre de clicks ne peut pas être négatif");
+			throw new IllegalArgumentException("Le nombre de clicks ne peut pas Ãªtre nÃ©gatif");
 		this.nbClicks = nbClicks;
 	}
 
@@ -114,7 +114,7 @@ public class MineHuntModel implements IMineHuntModel {
 	 */
 	public void setNbErreurs(int nbErreurs) {
 		if (nbErreurs < 0)
-			throw new IllegalArgumentException("Le nombre d'erreurs ne peut pas être négatif");
+			throw new IllegalArgumentException("Le nombre d'erreurs ne peut pas Ãªtre nÃ©gatif");
 		this.nbErreurs = nbErreurs;
 	}
 
@@ -124,7 +124,7 @@ public class MineHuntModel implements IMineHuntModel {
 	 */
 	public void setPourcentMines(int pourcentage) {
 		if (pourcentage < 0 || pourcentage > 100)
-			throw new IllegalArgumentException("Le pourcentage doit être compris entre 1 et 100");
+			throw new IllegalArgumentException("Le pourcentage doit Ãªtre compris entre 1 et 100");
 		pourcentDeMines = pourcentage;
 	}
 
@@ -213,7 +213,7 @@ public class MineHuntModel implements IMineHuntModel {
 	}
 
 	/**
-	 * Place (peut-être) une mine avev pourcentMine pourcent de chance
+	 * Place (peut-Ãªtre) une mine avev pourcentMine pourcent de chance
 	 * @param i
 	 * @param j
 	 */
@@ -228,12 +228,12 @@ public class MineHuntModel implements IMineHuntModel {
 	}
 
 	/**
-	 * Retourne true si la partie est terminée, sinon false
+	 * Retourne true si la partie est terminÃ©e, sinon false
 	 * @return true/false
 	 */
 	public boolean estTermine() {
 		// Si le nombre de clicks = nombre de cases sans bombes
-		// alors la partie est terminée
+		// alors la partie est terminÃ©e
 		return (nbClicks >= (terrain.length * terrain[0].length) - nbMines);
 
 	}
@@ -280,7 +280,7 @@ public class MineHuntModel implements IMineHuntModel {
 
 	/**
 	 * Retourne un tableau contenant les index des cases autour de la case dont
-	 * les index sont donnés en paramètre
+	 * les index sont donnÃ©s en paramÃ¨tre
 	 * @param i
 	 * @param j
 	 * @return
@@ -351,7 +351,7 @@ public class MineHuntModel implements IMineHuntModel {
 	}
 
 	/**
-	 * Compte le nombre de mines autour de la mine dont l'index est donné en paramètre
+	 * Compte le nombre de mines autour de la mine dont l'index est donnÃ© en paramÃ¨tre
 	 */
 	@Override
 	public int nbMinesAutour(int i, int j) {

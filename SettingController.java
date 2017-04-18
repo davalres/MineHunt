@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,7 +14,7 @@ public class SettingController implements EventHandler<ActionEvent> {
 
 	@Override
 	/**
-	 * Lorsque le menu Setting est pressé
+	 * Lorsque le menu Setting est pressÃ©
 	 */
 	public void handle(ActionEvent event) {
 		System.out.println("JEAN");
@@ -22,7 +22,7 @@ public class SettingController implements EventHandler<ActionEvent> {
 	}
 
 	/**
-	 * Lorsque le bouton "Ok" de la vue Seting est pressé
+	 * Lorsque le bouton "Ok" de la vue Seting est pressÃ©
 	 */
 	public void btnOk() {
 		int hauteur = view.getHauteur();

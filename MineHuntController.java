@@ -1,4 +1,4 @@
-package s02;
+ï»¿package s02;
 
 import s02.MineHuntModel;
 import s02.MineHuntView;
@@ -8,7 +8,7 @@ public class MineHuntController {
 	private MineHuntView view;
 
 	// CONSTRUCTEUR
-	// ------------------------------------------------------------------------------------------------
+	// -------------------------------------------------
 	public MineHuntController(MineHuntModel model, MineHuntView view) {
 		this.view = view;
 		this.model = model;
@@ -38,8 +38,8 @@ public class MineHuntController {
 	}
 
 	/**
-	 * Cette méthode sert à définir un terrain lors de la première initialisation
-	 * ensuite, l'utilisateur pourra définir cela lui-même
+	 * Cette mÃ©thode sert Ã  dÃ©finir un terrain lors de la premiÃ¨re initialisation
+	 * ensuite, l'utilisateur pourra dÃ©finir cela lui-mÃªme
 	 */
 	public void firstInit() {
 		int hauteur = 10;
